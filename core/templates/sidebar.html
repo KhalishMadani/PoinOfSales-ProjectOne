@@ -36,30 +36,31 @@
 
         <ul class="menu_item">
           <div class="menu_title flex">
-            <span class="title">Editor</span>
+            <span class="title">Menu</span>
             <span class="line"></span>
           </div>
+          
           <li class="item">
             <a href="#" class="link flex">
-              <i class="bx bxs-magic-wand"></i>
-              <span>Magic Build</span>
+              <i class="bx bx-cart"></i>
+              <span>Store</span>
             </a>
           </li>
           <li class="item">
             <a href="#" class="link flex">
               <i class="bx bx-folder"></i>
-              <span>New Projects</span>
+              <span>Inventory</span>
             </a>
           </li>
           <li class="item">
             <a href="#" class="link flex">
-              <i class="bx bx-cloud-upload"></i>
-              <span>Upload New</span>
+              <i class="bx bxs-magic-wand"></i>
+              <span>User Management</span>
             </a>
           </li>
         </ul>
 
-        <ul class="menu_item">
+        {% comment %} <ul class="menu_item">
           <div class="menu_title flex">
             <span class="title">Setting</span>
             <span class="line"></span>
@@ -75,13 +76,37 @@
               <i class="bx bx-award"></i>
               <span>Award</span>
             </a>
-          </li>
+          </li> {% endcomment %}
+          
+          {% if user.is_authenticated %}
           <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-cog"></i>
-              <span>Setting</span>
-            </a>
+            <form id="logout-form" action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+
+            <li class="item">
+              <a href="#" onclick="logout()" class="link flex">
+                <i class="bx bx-user" ></i><span>{{user.username}}</span>
+              </a>
+
+              <a href="#" onclick="logout()" class="link flex">
+                <i class="bx bx-log-out" ></i><span>Logout</span>
+              </a>
+            </li>
+            </form>
           </li>
+
+          {% else %}
+
+          <li class="item">
+              <a href="/login" class="link flex">
+                <i class="bx bx-user"></i><span>Login </span>
+              </a>
+            </form>
+          </li>
+
+
+          {% endif %}
+
         </ul>
       </div>
 
@@ -98,8 +123,4 @@
   </nav>
 
 <script src="{% static 'js/sidebar.js' %}">
-    // Adding event listeners to buttons and sidebar for the corresponding actions
-
-sidebarOpenBtn.addEventListener("click", toggleSidebar);
-sidebarCloseBtn.addEventListener("click", toggleSidebar);
 </script>

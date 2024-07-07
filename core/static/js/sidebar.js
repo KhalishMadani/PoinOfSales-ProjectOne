@@ -42,8 +42,16 @@ if (window.innerWidth < 800) {
   sidebar.classList.remove("hoverable");
 }
 
+function logout() {
+  document.getElementById('logout-form').submit();
+  console.log('anchor tag clicked')
+}
+
+console.log('anchor clicked')
+
 sidebarLockBtn.addEventListener("click", toggleLock);
 sidebar.addEventListener("mouseleave", hideSidebar);
 sidebar.addEventListener("mouseenter", showSidebar);
 
 console.log('js file static success')
+console.log('new line added')
