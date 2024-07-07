@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endcomment %}
+</head>
+<body>
+    <header>
+        <!-- Header content -->
+    </header>
+    <div class="container">
+        <aside>
+            {% include 'sidebar.html' %}
+        </aside>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <footer>
+        <!-- Footer content -->
+    </footer>
+</body>
+</html>
