@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('home', TemplateView.as_view(template_name='base.html'), name='base'),
     path('', include('django.contrib.auth.urls')),
-    path('user/', include('user_management.urls')),
+    path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='base.html'), name='home'),
+    path('home/', TemplateView.as_view(template_name='base.html'), name='home'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('', include('user_management.urls')),
     path('product/', include('inventory_management.urls')),
 ]

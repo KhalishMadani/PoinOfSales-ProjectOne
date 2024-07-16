@@ -1,126 +1,77 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
-<link href="{% static 'css/google.css' %}" rel="stylesheet">
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-<nav class="sidebar locked">
-    <div class="logo_items flex">
-      <span class="nav_image">
-        <img src="{% static 'images/logo.png' %}" alt="logo_img" />
-      </span>
-      <span class="logo_name">Side Bar</span>
-      <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
-      <i class="bx bx-x" id="sidebar-close"></i>
-    </div>
-
-    <div class="menu_container">
-      <div class="menu_items">
-        <ul class="menu_item">
-          <div class="menu_title flex">
-            <span class="title">Dashboard</span>
-            <span class="line"></span>
-          </div>
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-home-alt"></i>
-              <span>Overview</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-grid-alt"></i>
-              <span>All Projects</span>
-            </a>
-          </li>
-        </ul>
-
-        <ul class="menu_item">
-          <div class="menu_title flex">
-            <span class="title">Menu</span>
-            <span class="line"></span>
-          </div>
-          
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-cart"></i>
-              <span>Store</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-folder"></i>
-              <span>Inventory</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bxs-magic-wand"></i>
-              <span>User Management</span>
-            </a>
-          </li>
-        </ul>
-
-        {% comment %} <ul class="menu_item">
-          <div class="menu_title flex">
-            <span class="title">Setting</span>
-            <span class="line"></span>
-          </div>
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-flag"></i>
-              <span>Notice Board</span>
-            </a>
-          </li>
-          <li class="item">
-            <a href="#" class="link flex">
-              <i class="bx bx-award"></i>
-              <span>Award</span>
-            </a>
-          </li> {% endcomment %}
-          
-          {% if user.is_authenticated %}
-          <li class="item">
-            <form id="logout-form" action="{% url 'logout' %}" method="post">
-              {% csrf_token %}
-
-            <li class="item">
-              <a href="#" onclick="logout()" class="link flex">
-                <i class="bx bx-user" ></i><span>{{user.username}}</span>
-              </a>
-
-              <a href="#" onclick="logout()" class="link flex">
-                <i class="bx bx-log-out" ></i><span>Logout</span>
-              </a>
-            </li>
-            </form>
-          </li>
-
-          {% else %}
-
-          <li class="item">
-              <a href="/login" class="link flex">
-                <i class="bx bx-user"></i><span>Login </span>
-              </a>
-            </form>
-          </li>
-
-
-          {% endif %}
-
-        </ul>
-      </div>
-
-      <div class="sidebar_profile flex">
-        <span class="nav_image">
-          <img src="" alt="logo_img" />
-        </span>
-        <div class="data_text">
-          <span class="name">David Oliva</span>
-          <span class="email">david@gmail.com</span>
+<div class="sidebar">
+    <div class="head">
+        <div class="user-img">
+            <img src="{% static 'images/logo.jpg' %}" alt="">
         </div>
-      </div>
+        <div class="user-details">
+            <p class="title">Frieda Ware</p>
+            <p class="name">POS Applications</p>
+        </div>
     </div>
-  </nav>
 
-<script src="{% static 'js/sidebar.js' %}">
-</script>
+    <div class="nav">
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-chart-line"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#sub-menu">
+                        <i class="fa fa-boxes-stacked"></i>
+                        <span class="text">Inventory Management</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <a href="{% url 'category_input' %}">
+                            <span>Kategori</span>
+                        </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a href="{% url 'distributor_input' %}">
+                            <span>Distributor</span>
+                        </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a href="{% url 'product_input' %}">
+                            <span>Barang Masuk Pertama</span>
+                        </a>
+                    </ul>                    
+                    <ul class="sub-menu">
+                        <a href="">
+                            <span>Barang</span>
+                        </a>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#sub-menu">
+                        <i class="fa fa-cart-shopping"></i>
+                        <span class="text">Sales Management</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <a href="">
+                            <span>Penjualan</span>
+                        </a>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa fa-user"></i>
+                    <span class="text">User</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

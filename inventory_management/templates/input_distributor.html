@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main">
+    <div class="main-title">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="form-area">
+        <form action="{% url 'distributor_input' %}" method="post">
+            {% csrf_token %}
+            <div class="distri-item">
+                <label for="">Vendor Name: </label>
+                <input type="text" name="company_name">
+            </div>
+
+            <button>Submit</button>
+        </form>
+    </div>
+    
+</div>
+
+{% endblock %}

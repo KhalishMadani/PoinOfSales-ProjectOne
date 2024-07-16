@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main">
+    <div class="main-title">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="form-area">
+        <form action="{% url 'category_input' %}" method="post">
+            {% csrf_token %}
+            <div class="category-item">
+                <label for="">Kategori ID: </label>
+                <input type="text" name="category_id">
+            </div>
+
+            <div class="category-item">
+                <label for="">Kategori: </label>
+                <input type="text" name="category_name">
+            </div>
+
+            <button>Submit</button>
+        </form>
+    </div>
+    
+</div>
+
+{% endblock %}
