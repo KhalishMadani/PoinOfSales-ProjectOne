@@ -15,6 +15,18 @@ urlpatterns = [
 
     path('product-new-input-form/',
          views.ProductListInput.as_view(),
+         name='product_input_new'
+         ),
+    
+    path('product-input-form/',
+         views.ProductInput.as_view(),
          name='product_input'
+         ),
+
+
+    # fetch function    
+    path('fetch-product-function/',
+         views.barcode_scanner,
+         name='scanner'
          ),
 ]

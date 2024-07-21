@@ -1,37 +1,38 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="main">
-    <div class="main-title">
-        <h1>{{title}}</h1>
-    </div>
-    <div class="form-area">
-        <form action="{% url 'product_input' %}" method="post">
-            {% csrf_token %}
-            <div class="category-item">
-                <label for="">Nama Barang Baru: </label>
-                <input type="text" name="product_name">
-            </div>
+  <div class="main-title">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="form-area">
+    <form action="{% url 'product_input' %}" method="post">
+      <div class="">
+        <div class="">
+          {% csrf_token %}
+          <div class="category-item">
+            <label for="">Nama Barang Baru: </label>
+            <input type="text" name="product_name" class="form-control" />
+          </div>
 
-            <div class="category-item">
-                <label for="">Barcode: </label>
-                <input type="text" name="barcode">
-            </div>
+          <div class="category-item">
+            <label for="">Barcode: </label>
+            <input type="text" name="barcode" class="form-control" />
+          </div>
 
-            <div class="category-item">
-                <label for="">QR Code: </label>
-                <input type="text" name="qr_code">
-            </div>
+          <div class="category-item">
+            <label for="">QR Code: </label>
+            <input type="text" name="qr_code" class="form-control" />
+          </div>
 
-            <div class="category-item">
-                <label for="">Karton: </label>
-                <input type="number" name="carton">
-            </div>
+          <div class="category-item">
+            <label for="">Karton: </label>
+            <input type="number" name="carton" class="form-control" />
+          </div>
+        </div>
 
-            <button>Submit</button>
-        </form>
-    </div>
-    
+        <button class="btn btn-warning">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

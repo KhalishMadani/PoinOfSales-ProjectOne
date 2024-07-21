@@ -22,6 +22,7 @@ class Product(models.Model):
     product_barcode = models.CharField(max_length=50)
     pieces = models.IntegerField()
     current_pieces = models.IntegerField()
+    product_price = models.IntegerField(null=True)
     purchase_date = models.DateTimeField()
     expired_date = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
