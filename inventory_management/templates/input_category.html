@@ -9,16 +9,16 @@
         <form action="{% url 'category_input' %}" method="post">
             {% csrf_token %}
             <div class="category-item">
-                <label for="">Kategori ID: </label>
-                <input type="text" name="category_id">
+                <label for="">ID Kategori: </label>
+                <input type="text" name="category_id" class="form-control">
             </div>
 
             <div class="category-item">
-                <label for="">Kategori: </label>
-                <input type="text" name="category_name">
+                <label for="">Nama Kategori: </label>
+                <input type="text" name="category_name" class="form-control">
             </div>
 
-            <button>Submit</button>
+            <button class="btn btn-warning">Submit</button>
         </form>
     </div>
     
