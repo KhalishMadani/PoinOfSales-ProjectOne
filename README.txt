@@ -1,10 +1,13 @@
 --------------------- per set up ---------------------
 
-Create User Done
-Sidebar Added (05/07/2024, 22:34)
+-->install docker
+----pull postgres
 
-BackEnd Update (16/07/2024, 20:52)
-Forms Validation (Kategori, Distributor, ProductList)
+-->install dbeaver
+----connect postgres with dbeaver
 
-What to discuss upcoming week?
-about user login and user creation scenario
+-->pip install --upgrade
+-->pip install django
+-->copy folder "projectone"
+
+-->runserver
