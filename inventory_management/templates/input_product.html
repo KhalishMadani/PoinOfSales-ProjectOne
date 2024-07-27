@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<div class="main">
+    <div class="main-title">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="form-area">
+        <form action="{% url 'product_input' %}" method="post">
+            {% csrf_token %}
+
+            <div class="category-item">
+                <label for="">Scan Barcode Barang : </label>
+                <input type="text" name="product_barcode" oninput="fetchData(this,url_fetch)" class="form-control">
+            </div>
+
+            <div class="category-item">
+                <label for="">Nama Barang :</label>
+                <input type="text" name="product_name" id="product-name" class="form-control" readonly>
+            </div>
+
+            <div class="category-item">
+                <label for="">Harga Beli: </label>
+                <input type="number" name="product_price" class="form-control">
+            </div>
+
+            <div class="category-item">
+                <label for="">Tipe Karton</label>
+                <select name="" id="" class="form-control">
+                    <option selected>--- tentukan jenis karton ---</option>
+                    <option value="cup">Gelas</option>
+                    <option value="renteng">Renteng</option>
+                    <option value="pouch">Pouch</option>
+                </select>
+            </div>
+
+            <div class="category-item">
+                <label for="">Kategori: </label>
+                <select name="category_id" id="" class="form-control">
+                    <option selected>--- pilih kategori ---</option>
+                    {% for category in category_list %}
+                    <option value="{{category.category_id}}">{{category.category_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="category-item">
+                <label for="">Dari Vendor: </label>
+                <select name="company_name" id="" class="form-control">
+                    <option selected>--- pilih vendor ---</option>
+                    {% for vendor in vendor_list %}
+                    <option value="{{vendor.vendor_name}}">{{vendor.vendor_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="category-item">
+                <label for="">Tanggal Beli: </label>
+                <input type="date" name="purchase_date" class="form-control">
+            </div>
+
+            <div class="category-item">
+                <label for="">Tanggal Kadaluarsa: </label>
+                <input type="date" name="expired_date" class="form-control">
+            </div>
+
+            <button class="btn btn-warning">Submit</button>
+        </form>
+    </div>
+    
+</div>
+
+<script src="{% static 'js/fetch_data.js' %}"></script>
+<script>
+    const url_fetch = '{% url "scanner" %}'
+</script>
+
+{% endblock %}

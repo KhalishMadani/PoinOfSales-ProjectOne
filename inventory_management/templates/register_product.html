@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<div class="main">
+  <div class="main-title">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="form-area">
+    <form action="{% url 'register_product' %}" method="post">
+      <div class="">
+        <div class="">
+          {% csrf_token %}
+          <div class="category-item">
+            <label for="">Nama Barang Baru: </label>
+            <input type="text" name="product_name" class="form-control" />
+          </div>
+
+          <div class="category-item">
+            <label for="">Barcode: </label>
+            <input type="text" name="product_barcode" class="form-control" />
+          </div>
+
+        <button class="btn btn-warning">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

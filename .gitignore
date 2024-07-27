@@ -1,0 +1,19 @@
+# Ignore all migration files
+*/migrations/*.py
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+
+# Ignore collected static files
+staticfiles/
+
+# Do not ignore __init__.py files
+!*/migrations/__init__.py
+
+# ignore venv
+venv/
+
+# ignore dot.env 
+.env

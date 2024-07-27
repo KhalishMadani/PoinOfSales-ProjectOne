@@ -1,0 +1,77 @@
+{% load static %}
+
+<div class="sidebar">
+    <div class="head">
+        <div class="user-img">
+            <img src="{% static 'images/logo.jpg' %}" alt="">
+        </div>
+        <div class="user-details">
+            <p class="title">Frieda Ware</p>
+            <p class="name">POS Applications</p>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-chart-line"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#sub-menu">
+                        <i class="fa fa-boxes-stacked"></i>
+                        <span class="text">Inventory Management</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <a href="{% url 'register_category' %}">
+                            <span>Kategori</span>
+                        </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a href="{% url 'register_vendor' %}">
+                            <span>Distributor</span>
+                        </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a href="{% url 'register_product' %}">
+                            <span>Registrasi Barang</span>
+                        </a>
+                    </ul>                    
+                    <ul class="sub-menu">
+                        <a href="{% url 'product_input' %}">
+                            <span>Barang</span>
+                        </a>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#sub-menu">
+                        <i class="fa fa-cart-shopping"></i>
+                        <span class="text">Sales Management</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <a href="">
+                            <span>Penjualan</span>
+                        </a>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa fa-user"></i>
+                    <span class="text">User</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
