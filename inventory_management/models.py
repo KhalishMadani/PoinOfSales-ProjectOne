@@ -16,10 +16,11 @@ class Vendor(models.Model):
 
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
-    product_name = models.CharField(max_length=50)
+    # product_name = models.CharField(max_length=50)
     product_price = models.IntegerField()
     product_type = models.CharField(max_length=50)
-    carton_box = models.IntegerField()
+    packing_qty = models.IntegerField()
+    renteng = models.IntegerField(null=True)
     pieces = models.IntegerField()
     current_pieces = models.IntegerField()
     purchase_date = models.DateTimeField()

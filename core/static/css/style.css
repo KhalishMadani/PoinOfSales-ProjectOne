@@ -139,3 +139,9 @@
     margin-bottom: 18px;
     /* color: #f79d72; */
 }
+
+.category-item .product-type {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}

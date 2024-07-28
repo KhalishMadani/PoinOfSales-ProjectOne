@@ -20,7 +20,7 @@ urlpatterns = [
     
     path('product-input-form/',
          views.ProductInput.as_view(),
-         name='product_input'
+         name='create_product'
          ),
 
 

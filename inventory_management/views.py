@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
 
 from .models import CategoryProduct, Vendor, RegisterProduct
-from .forms import CategoryForm, VendorForm, RegisterProductForm, ProductForm
+from .forms import CategoryForm, VendorForm, RegisterProductForm, ProductForm, ProductFormRenteng
 
 
 # Create your views here.
@@ -87,15 +87,29 @@ class ProductInput(View):
     def post(self, request):
         form_data = request.POST.copy()
         form_data['current_pieces'] = form_data.get('pieces')
+        # form_renteng = ProductFormRenteng(form_data)
         form = ProductForm(form_data)
+
+        # if form_renteng.is_valid():
+        #     product = form_renteng.save()
+        #     context = {'product': product}
+        #     messages.success(request, 'Produk Berhasil Disimpan')
+        #     return render(request, 'partial/just_created_item.html', context)
+        
         if form.is_valid():
-            form.save()
+            product = form.save()
+            context = {'product': product}
             messages.success(request, 'Produk Berhasil Disimpan')
-            return HttpResponseRedirect(reverse_lazy('product_input'))
+            return render(request, 'partial/just_created_item.html', context)
+        
         else:
-            print(f'category form error: {form}')
+            # for renteng in form_renteng.errors:
+            #     print(renteng)
+
+            for error in form.errors:
+                print(error)
             messages.error(request, 'Produk Gagal Disimpan')
-            return HttpResponseRedirect(reverse_lazy('product_input'))
+            return HttpResponseRedirect(reverse_lazy('create_product'))
     
 
 def barcode_scanner(request):

@@ -2,12 +2,13 @@
 
 {% load static %}
 {% block content %}
-<div class="main">
+
+<div class="main" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div class="main-title">
         <h1>{{title}}</h1>
     </div>
     <div class="form-area">
-        <form action="{% url 'product_input' %}" method="post">
+        <form hx-post="{% url 'create_product' %}">
             {% csrf_token %}
 
             <div class="category-item">
@@ -26,28 +27,73 @@
             </div>
 
             <div class="category-item">
-                <label for="">Tipe Karton</label>
-                <select name="" id="" class="form-control">
+                <label for="">Tipe Barang</label>
+                <select name="product_type" id="" class="form-control">
                     <option selected>--- tentukan jenis karton ---</option>
-                    <option value="cup">Gelas</option>
+                    <option value="dus">Dus</option>
                     <option value="renteng">Renteng</option>
-                    <option value="pouch">Pouch</option>
+                    <option value="botol">Botol</option>
                 </select>
             </div>
 
             <div class="category-item">
+
+                <div class="product-type">
+                    <div class="dus">
+                        <label>Jumlah Dus :</label>
+                        <input type="number" name="dus-packing_qty" id="" class="form-control">
+                    </div>
+
+                    <div class="dus">
+                        <label>Pcs :</label>
+                        <input type="number" name="dus-pieces" class="form-control">
+                    </div>
+                </div>
+
+                <div class="product-type">
+                    <div class="bottle">
+                        <label>Jumlah Pack :</label>
+                        <input type="number" name="botol-packing_qty" id="" class="form-control">
+                    </div>
+
+                    <div class="bottle">
+                        <label>Pcs :</label>
+                        <input type="number" name="botol-pieces" class="form-control">
+                    </div>
+                </div>
+
+                <div class="product-type">
+                    <div class="renteng">
+                        <label>Jumlah Dus :</label>
+                        <input type="number" name="renteng-packing_qty" id="" class="form-control">
+                    </div>
+
+                    <div class="renteng">
+                        <label>Per Renteng :</label>
+                        <input type="number" name="renteng" id="" class="form-control">
+                    </div>
+
+                    <div class="renteng">
+                        <label>Pcs :</label>
+                        <input type="number" name="renteng-pieces" class="form-control">
+                    </div>
+                </div>
+      
+            </div>
+
+            <div class="category-item">
                 <label for="">Kategori: </label>
-                <select name="category_id" id="" class="form-control">
+                <select name="category_name" id="" class="form-control">
                     <option selected>--- pilih kategori ---</option>
                     {% for category in category_list %}
-                    <option value="{{category.category_id}}">{{category.category_name}}</option>
+                    <option value="{{category.category_name}}">{{category.category_name}}</option>
                     {% endfor %}
                 </select>
             </div>
 
             <div class="category-item">
                 <label for="">Dari Vendor: </label>
-                <select name="company_name" id="" class="form-control">
+                <select name="vendor_name" id="" class="form-control">
                     <option selected>--- pilih vendor ---</option>
                     {% for vendor in vendor_list %}
                     <option value="{{vendor.vendor_name}}">{{vendor.vendor_name}}</option>
@@ -67,6 +113,12 @@
 
             <button class="btn btn-warning">Submit</button>
         </form>
+    </div>
+
+    <br>
+    <br>
+    <div class="partials">
+        {% include "partials/just_created_item.html" %}
     </div>
     
 </div>

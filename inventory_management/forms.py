@@ -16,7 +16,12 @@ class RegisterProductForm(forms.ModelForm):
         model = RegisterProduct
         exclude = ['created_at',]
 
-class ProductForm(forms.ModelForm):
+class ProductFormRenteng(forms.ModelForm):
     class Meta:
         model = Product
         exclude = ['created_at']
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        exclude = ['renteng', 'created_at']
