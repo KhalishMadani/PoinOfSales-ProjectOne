@@ -1,1 +1,174 @@
-<h1>dashboard</h1>
+<style>
+    .maindash {
+        margin-top: 100px;
+    }
+
+    .dashboard {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        margin-left: 100px;
+    }
+
+    .dashboard-sub {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 40px;
+ 
+    }
+
+    canvas {
+        width: 400px;
+        height: 600px;
+    }
+</style>
+
+<div class="maindash">
+
+    <div class="dashboard">
+        <div class="dashboard-sub">
+            <h3>PT Mayora</h3>
+            <div>
+                <canvas id="mayora"></canvas>
+            </div>
+        </div>
+        
+        <div class="dashboard-sub">
+            <h3>Indogrosir</h3>
+            <div>
+                <canvas id="indogrosir"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard">
+        <div class="dashboard-sub">
+            <h3>Hypermart</h3>
+            <div>
+                <canvas id="hypermart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  
+<script>
+
+const mayora = document.getElementById('mayora');
+new Chart(mayora, {
+    type: 'bar',
+    data: {
+        labels: ['Minyakita', 'Pepsodent', 'Pantene'],
+        datasets: [
+            {
+                label: 'buy',
+                data: [40000, 20000, 55000],
+                borderWidth: 1
+            },
+            {
+                label: 'sale',
+                data: [45000, 40000, 70000],
+                borderWidth: 1
+            }
+        ]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+        scales: {
+            y: {
+            max: 100000
+            }
+        },
+        plugins: {
+            datalabels: {
+                anchor: 'end',
+                align: 'end',
+                formatter: function(value) {
+                    return 'Rp' + value;
+                }
+            }
+        }
+    }
+});
+
+const indogrosir = document.getElementById('indogrosir');
+
+new Chart(indogrosir, {
+    type: 'bar',
+    data: {
+        labels: ['Minyakita', 'Pepsodent', 'Pantene'],
+        datasets: [
+            {
+                label: 'buy',
+                data: [35000, 20000, 44000],
+                borderWidth: 1
+            },
+            {
+                label: 'sale',
+                data: [55000, 30000, 48000],
+                borderWidth: 1
+            }
+        ]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+        scales: {
+            y: {
+            max: 100000
+            }
+        },
+        plugins: {
+            datalabels: {
+                anchor: 'end',
+                align: 'end',
+                formatter: function(value) {
+                    return 'Rp' + value;
+                }
+            }
+        }
+    }
+});
+
+const hypermart = document.getElementById('hypermart');
+
+new Chart(hypermart, {
+    type: 'bar',
+    data: {
+        labels: ['Minyakita', 'Pepsodent', 'Pantene'],
+        datasets: [
+            {
+                label: 'buy',
+                data: [40000, 20000, 55000],
+                borderWidth: 1
+            },
+            {
+                label: 'sale',
+                data: [45000, 30000, 70000],
+                borderWidth: 1
+            }
+        ]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+        scales: {
+            y: {
+            max: 100000
+            }
+        },
+        plugins: {
+            datalabels: {
+                anchor: 'end',
+                align: 'end',
+                formatter: function(value) {
+                    return 'Rp' + value;
+                }
+            }
+        }
+    }
+});
+
+</script>
