@@ -40,5 +40,5 @@ def sign_up(request):
 #         return HttpResponse(status=401)
 
 
-# class LoginUser(LoginView):
-#     template_name = 'registration/login.html'
+class LoginUser(LoginView):
+    template_name = 'registration/login.html'

@@ -16,4 +16,4 @@ staticfiles/
 venv/
 
 # ignore dot.env 
-.env
+# .env
