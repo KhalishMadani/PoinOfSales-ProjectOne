@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main">
+    <div class="main-title">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="form-area">
+        {% if form_categories %}
+            {% include "partials/form_category.html" %}
+        {% endif %}
+
+        {% if form_vendor %}
+            {% include "partials/form_vendor.html" %}
+        {% endif %}
+    </div>
+
+    <br>
+    <br>
+    <label for="">List {{title}}: </label>
+    <div id="list-partial">
+        {% include "partials/list.html" %}
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -16,7 +16,7 @@
 
     {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endcomment %}
 </head>
-<body>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <header>
         <!-- Header content -->
     </header>
@@ -26,7 +26,7 @@
         </aside>
         <main>
             {% block content %}
-            
+            {% include "dashboard.html" %}
             {% endblock %}
         </main>
     </div>

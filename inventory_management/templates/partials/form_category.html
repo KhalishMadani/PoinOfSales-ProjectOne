@@ -1,0 +1,9 @@
+
+<form hx-post="{% url 'create_category' %}" hx-target="#list-partial" hx-swap="innerHTML" hx-on="htmx:afterRequest: this.reset()">
+    {% csrf_token %}
+    <div class="category-item">
+        {{form_categories.as_p}}
+    </div>
+
+    <button class="btn btn-warning">Submit</button>
+</form>

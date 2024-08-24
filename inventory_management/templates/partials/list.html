@@ -1,0 +1,11 @@
+{% if categories %}
+    {% for category in categories %}
+        <li>{{category.category_name}}</li>
+    {% endfor %}
+{% endif %}
+
+{% if vendors %}
+    {% for vendor in vendors %}
+        <li>{{vendor.vendor_name}}</li>
+    {% endfor %}
+{% endif %}

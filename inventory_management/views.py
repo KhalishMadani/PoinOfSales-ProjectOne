@@ -9,47 +9,28 @@ from .forms import CategoryForm, VendorForm, RegisterProductForm, ProductForm, P
 
 
 # Create your views here.
-class CategoryInput(View):
-    template = 'register_category.html'
+class CategoryPage(View):
+    template = 'index_register.html'
 
     def get(self,request):
         context = {
-            'title': 'Input Kategori'
+            'title': 'Kategori',
+            'form_categories': CategoryForm(),
+            'categories': CategoryProduct.objects.all().order_by('created_at')
         }
         return render(request, self.template, context)
-    
-    def post(self,request):
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Kategori Berhasil Ditambahkan')
-            return HttpResponseRedirect(reverse_lazy('register_category'))
-        else:
-            print(f'category form error: {form}')
-            messages.error(request, 'Kategori Gagal Ditambahkan')
-            return HttpResponseRedirect(reverse_lazy('register_category'))
         
 
 class VendorInput(View):
-    template = 'register_vendor.html'
+    template = 'index_register.html'
 
     def get(self, request):
         context = {
-            'title': 'Input Distributor'
+            'title': 'Distributor',
+            'form_vendor': VendorForm(),
+            'vendors': Vendor.objects.all()
         }
         return render(request, self.template, context)
-    
-    def post(self, request):
-        form = VendorForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Distributor Berhasil Ditambahkan')
-            return HttpResponseRedirect(reverse_lazy('register_vendor'))
-        else:
-            print(f'category form error: {form}')
-            messages.error(request, 'Distirbutor Gagal Ditambahkan')
-            return HttpResponseRedirect(reverse_lazy('register_vendor'))
-        
 
 class RegisterProductInput(View):
     template = 'register_product.html'
@@ -128,3 +109,27 @@ def barcode_scanner(request):
         
         except:
             print(f'value error not found')
+
+
+# handle form submittion with htmx
+def create_category(request):
+    if request.method =='POST':
+        form = CategoryForm(request.POST or None)
+        if form.is_valid():
+            categories = form.save()
+            context = {'categories': CategoryProduct.objects.all()}
+            return render(request, 'partials/list.html', context)
+        
+        else:
+            return JsonResponse({'success': False, 'message': 'Kategori Gagal Dimasukkan'}, status=400)
+        
+def create_vendor(request):
+    if request.method =='POST':
+        form = VendorForm(request.POST or None)
+        if form.is_valid():
+            vendor = form.save()
+            context = {'vendors': Vendor.objects.all()}
+            return render(request, 'partials/list.html', context)
+        
+        else:
+            return JsonResponse({'success': False, 'message': 'Vendor Gagal Dimasukkan'}, status=400)
